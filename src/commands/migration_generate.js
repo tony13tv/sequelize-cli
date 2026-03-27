@@ -14,7 +14,8 @@ exports.builder = (yargs) =>
     }).option('extension', {
       describe: 'The extension to use.',
       type: 'string',
-      default: 'js'
+      default: 'js',
+      choices: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts']
     })
   ).argv;
 
