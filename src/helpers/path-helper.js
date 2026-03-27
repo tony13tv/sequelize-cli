@@ -44,8 +44,8 @@ module.exports = {
     );
   },
 
-  getFileExtension() {
-    return 'js';
+  getFileExtension(options = args) {
+    return options.extension || 'js';
   },
 
   addFileExtension(basename, options) {
