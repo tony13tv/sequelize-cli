@@ -1,3 +1,4 @@
+'use strict';
 import { Migration } from 'sequelize-cli';
 
 module.exports = {

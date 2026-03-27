@@ -15,17 +15,24 @@ exports.builder = (yargs) =>
       describe: 'The extension to use.',
       type: 'string',
       default: 'js',
-      choices: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts']
+      choices: ['js', 'ts']
+    }).option('module', {
+      describe: 'The package.json type.',
+      type: 'string',
+      default: 'module',
+      choices: ['commonjs', 'module']
     })
   ).argv;
 
 exports.handler = function (args) {
   helpers.init.createMigrationsFolder();
 
+  const extension = (args.module === 'commonjs' ? 'c' : 'm') + args.extension;
+
   fs.writeFileSync(
     helpers.path.getMigrationPath(args.name),
     helpers.template.render(
-      'migrations/skeleton.' + args.extension,
+      'migrations/skeleton.' + extension,
       {},
       {
         beautify: false,
