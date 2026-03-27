@@ -11,6 +11,10 @@ exports.builder = (yargs) =>
       describe: 'Defines the name of the migration',
       type: 'string',
       demandOption: true,
+    }).option('extension', {
+      describe: 'The extension to use.',
+      type: 'string',
+      default: 'js'
     })
   ).argv;
 
