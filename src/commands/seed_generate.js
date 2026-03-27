@@ -10,6 +10,11 @@ exports.builder = (yargs) =>
     describe: 'Defines the name of the seed',
     type: 'string',
     demandOption: true,
+  }).option('extension', {
+    describe: 'The extension to use.',
+    type: 'string',
+    default: 'js',
+    choices: ['js', 'cjs', 'mjs', 'ts', 'cts', 'mts']
   }).argv;
 
 exports.handler = function (args) {
@@ -18,7 +23,7 @@ exports.handler = function (args) {
   fs.writeFileSync(
     helpers.path.getSeederPath(args.name),
     helpers.template.render(
-      'seeders/skeleton.js',
+      'seeders/skeleton.' + args.extension,
       {},
       {
         beautify: false,
