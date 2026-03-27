@@ -108,7 +108,9 @@ module.exports = {
   },
 
   generateFileContent(args) {
-    return helpers.template.render('models/model.js', {
+    const extension = (args.module === 'commonjs' ? 'c' : 'm') + args.extension;
+
+    return helpers.template.render('models/model.' + extension, {
       name: args.name,
       attributes: this.transformAttributes(args.attributes),
       underscored: args.underscored,
