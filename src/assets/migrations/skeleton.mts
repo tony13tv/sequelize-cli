@@ -1,4 +1,4 @@
-import { Migration } from 'sequelize-cli';
+import { type Migration } from 'sequelize-cli';
 
 export default {
   async up (queryInterface, Sequelize) {

@@ -9,7 +9,8 @@ module.exports = {
   },
 
   generateTableCreationFileContent(args) {
-    return helpers.template.render('migrations/create-table.js', {
+    const extension = (args.module === 'commonjs' ? 'c' : 'm') + args.extension;
+    return helpers.template.render('migrations/create-table.' + extension, {
       tableName: this.getTableName(args.name),
       attributes: helpers.model.transformAttributes(args.attributes),
       createdAt: args.underscored ? 'created_at' : 'createdAt',

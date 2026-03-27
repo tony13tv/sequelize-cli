@@ -22,6 +22,18 @@ exports.builder = (yargs) =>
         type: 'string',
         demandOption: false,
       })
+      .option('extension', {
+        describe: 'The extension to use.',
+        type: 'string',
+        default: 'js',
+        choices: ['js', 'ts']
+      })
+      .option('module', {
+        describe: 'The package.json type.',
+        type: 'string',
+        default: 'module',
+        choices: ['commonjs', 'module']
+      })
   ).argv;
 
 exports.handler = function (args) {
